@@ -1,0 +1,8 @@
+import earthLottie from './earth.json';
+import contact from './contact.mp4';
+import work1 from './work1.webm';
+import work2 from './work2.webm';
+import work3 from './work3.webm';
+
+
+export { earthLottie, contact, work1, work2, work3 };
