@@ -26,8 +26,8 @@
         <p
           class="heading-4 font-fancy col-span-8 w-full text-balance sm:font-semibold lg:col-span-7"
         >
-          Personal projects built with passion and purpose — exploring ideas
-          at the intersection of mobile, AI, and full-stack engineering.
+          Personal projects built with passion and purpose — exploring ideas at
+          the intersection of mobile, AI, and full-stack engineering.
         </p>
       </div>
     </div>
@@ -84,22 +84,24 @@
                 {{ work.category }}
               </p>
               <div class="flex flex-col gap-4">
-                <h3 class="heading-3 font-title! font-bold uppercase leading-tight">
+                <h3
+                  class="heading-3 font-title! leading-tight font-bold uppercase"
+                >
                   {{ work.name }}
                 </h3>
-                <div class="flex flex-wrap gap-1.5 select-none">
-                  <p
-                    class="border-flax-smoke-300 hover:bg-flax-smoke-300 hover:text-flax-smoke-900 rounded-full border px-4 py-2 transition-[background-color,color] duration-500 ease-in-out"
+                <div class="flex flex-wrap gap-1.5 select-none" @click.prevent>
+                  <div
+                    class="border-flax-smoke-300 hover:bg-flax-smoke-300 hover:text-flax-smoke-900 cursor-default rounded-full border px-4 py-2 transition-[background-color,color] duration-500 ease-in-out"
                     v-for="tag in work.tags"
                     :key="tag"
                   >
                     <span>{{ tag }}</span>
-                  </p>
-                  <p
-                    class="border-flax-smoke-300 bg-flax-smoke-300 text-flax-smoke-900 hover:text-flax-smoke-300 rounded-full border px-4 py-2 transition-[background-color,color] duration-500 ease-in-out hover:bg-transparent"
+                  </div>
+                  <div
+                    class="border-flax-smoke-300 bg-flax-smoke-300 text-flax-smoke-900 hover:text-flax-smoke-300 cursor-default rounded-full border px-4 py-2 transition-[background-color,color] duration-500 ease-in-out hover:bg-transparent"
                   >
                     <span>{{ work.year }}</span>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -110,9 +112,15 @@
             v-if="work.details"
             @click.stop="toggleDetails(i)"
             class="view-details-btn mt-3 flex items-center gap-2 text-sm font-semibold tracking-widest uppercase transition-colors duration-300"
-            :class="openCards.has(i) ? 'text-flax-smoke-100' : 'text-flax-smoke-400 hover:text-flax-smoke-100'"
+            :class="
+              openCards.has(i)
+                ? 'text-flax-smoke-100'
+                : 'text-flax-smoke-400 hover:text-flax-smoke-100'
+            "
           >
-            <span>{{ openCards.has(i) ? 'Hide Details' : 'View Details' }}</span>
+            <span>{{
+              openCards.has(i) ? 'Hide Details' : 'View Details'
+            }}</span>
             <svg
               class="size-4 transition-transform duration-300"
               :class="openCards.has(i) ? 'rotate-180' : ''"
@@ -131,23 +139,44 @@
           <Transition name="details-slide">
             <div
               v-if="work.details && openCards.has(i)"
-              class="details-panel mt-4 rounded-xl border border-flax-smoke-300/20 bg-flax-smoke-900/40 px-5 py-5 backdrop-blur-sm"
+              class="details-panel border-flax-smoke-300/20 bg-flax-smoke-900/40 mt-4 rounded-xl border px-5 py-5 backdrop-blur-sm"
             >
               <!-- Overview -->
               <div class="mb-4">
-                <p class="heading-6 text-flax-smoke-400 mb-1 uppercase tracking-widest">Overview</p>
-                <p class="text-flax-smoke-200 text-sm leading-relaxed">{{ work.details.overview }}</p>
+                <p
+                  class="heading-6 text-flax-smoke-400 mb-1 tracking-widest uppercase"
+                >
+                  Overview
+                </p>
+                <p class="text-flax-smoke-200 text-sm leading-relaxed">
+                  {{ work.details.overview }}
+                </p>
               </div>
 
               <!-- Tech Stack -->
               <div v-if="work.details.techStack" class="mb-4">
-                <p class="heading-6 text-flax-smoke-400 mb-1 uppercase tracking-widest">Tech Stack</p>
-                <p class="text-flax-smoke-200 text-sm leading-relaxed">{{ work.details.techStack }}</p>
+                <p
+                  class="heading-6 text-flax-smoke-400 mb-1 tracking-widest uppercase"
+                >
+                  Tech Stack
+                </p>
+                <p class="text-flax-smoke-200 text-sm leading-relaxed">
+                  {{ work.details.techStack }}
+                </p>
               </div>
 
               <!-- Achievements -->
-              <div v-if="work.details.achievements && work.details.achievements.length" class="mb-4">
-                <p class="heading-6 text-flax-smoke-400 mb-2 uppercase tracking-widest">Key Achievements</p>
+              <div
+                v-if="
+                  work.details.achievements && work.details.achievements.length
+                "
+                class="mb-4"
+              >
+                <p
+                  class="heading-6 text-flax-smoke-400 mb-2 tracking-widest uppercase"
+                >
+                  Key Achievements
+                </p>
                 <ul class="space-y-1.5">
                   <li
                     v-for="(ach, ai) in work.details.achievements"
@@ -161,7 +190,10 @@
               </div>
 
               <!-- Links -->
-              <div v-if="work.details.links && work.details.links.length" class="flex flex-wrap gap-2 pt-1">
+              <div
+                v-if="work.details.links && work.details.links.length"
+                class="flex flex-wrap gap-2 pt-1"
+              >
                 <a
                   v-for="(link, li) in work.details.links"
                   :key="li"
@@ -183,7 +215,14 @@
 <script setup lang="ts">
   import { animateSplitText } from '@/animations';
   import { textSplitterIntoChar } from '@/functions';
-  import { computed, onBeforeMount, onMounted, ref, reactive, useTemplateRef } from 'vue';
+  import {
+    computed,
+    onBeforeMount,
+    onMounted,
+    ref,
+    reactive,
+    useTemplateRef,
+  } from 'vue';
   import gsap from 'gsap';
   import { useWindowSize } from '@vueuse/core';
   import { work1, work2 } from '@/assets/videos';
@@ -232,8 +271,10 @@
       url: 'https://github.com/sandeshverma0311/strata',
       year: '2024',
       details: {
-        overview: 'An Android app that lets Strava athletes generate and share beautiful visual stories from their workout data, complete with a custom image editor.',
-        techStack: 'Kotlin · Jetpack Compose · MVVM · Supabase · Ktor · Room DB · REST API · Timber',
+        overview:
+          'An Android app that lets Strava athletes generate and share beautiful visual stories from their workout data, complete with a custom image editor.',
+        techStack:
+          'Kotlin · Jetpack Compose · MVVM · Supabase · Ktor · Room DB · REST API · Timber',
         achievements: [
           'Reduced redundant API calls by 40% with offline-first Room DB architecture',
           'Zero client-side secret exposure via Supabase Edge Functions OAuth 2.0',
@@ -242,7 +283,10 @@
           'Targeted 10,000+ Strava athletes',
         ],
         links: [
-          { label: 'GitHub', url: 'https://github.com/sandeshverma0311/strata' },
+          {
+            label: 'GitHub',
+            url: 'https://github.com/sandeshverma0311/strata',
+          },
         ],
       },
     },
@@ -255,7 +299,8 @@
       url: 'https://github.com/ren276/Sentinels',
       year: '2025 - 2026',
       details: {
-        overview: 'An ML Observability Platform that scales real-time telemetry ingestion to enterprise-level infrastructure and eliminates third-party API costs using localized Llama 3.2.',
+        overview:
+          'An ML Observability Platform that scales real-time telemetry ingestion to enterprise-level infrastructure and eliminates third-party API costs using localized Llama 3.2.',
         techStack: 'FastAPI · Kafka · Llama 3.2 · Next.js 15 · PostgreSQL',
         achievements: [
           'Scaled real-time telemetry ingestion pipeline to process 10,000+ metrics/sec',
@@ -398,25 +443,28 @@
 </script>
 
 <style scoped>
-/* Smooth expand / collapse transition */
-.details-slide-enter-active,
-.details-slide-leave-active {
-  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.4s ease;
-  overflow: hidden;
-  max-height: 600px;
-}
-.details-slide-enter-from,
-.details-slide-leave-to {
-  opacity: 0;
-  transform: translateY(-8px);
-  max-height: 0;
-}
+  /* Smooth expand / collapse transition */
+  .details-slide-enter-active,
+  .details-slide-leave-active {
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease,
+      max-height 0.4s ease;
+    overflow: hidden;
+    max-height: 600px;
+  }
+  .details-slide-enter-from,
+  .details-slide-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+    max-height: 0;
+  }
 
-.view-details-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-family: inherit;
-}
+  .view-details-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+  }
 </style>

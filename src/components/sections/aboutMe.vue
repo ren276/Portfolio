@@ -30,23 +30,31 @@
       ></h3>
     </div>
 
-    <div class="padding-y md:column-gap mt-6 grid grid-cols-12">
+    <div class="padding-y md:column-gap mt-6 block md:grid md:grid-cols-12">
+      <!-- Desktop Image -->
       <div
-        class="pointer-events-none col-span-full content-end rounded-lg select-none md:col-span-4"
+        class="pointer-events-none hidden content-end select-none md:col-span-4 md:block"
       >
         <img
           :src="profile2"
-          class="aspect-[1/1.5] rounded-lg object-cover object-top mix-blend-screen brightness-90 grayscale"
+          class="aspect-square w-full rounded-full object-cover object-center mix-blend-screen brightness-90 grayscale"
           alt="Headshot of Sandesh facing a camera"
         />
       </div>
-      <div class="col-span-11 mt-10 md:col-span-8 md:col-start-6">
+
+      <!-- Text Container & Mobile Image Floated -->
+      <div class="mt-10 md:col-span-8 md:col-start-6">
+        <img
+          :src="profile2"
+          class="pointer-events-none float-left mr-6 mb-3 aspect-square size-32 rounded-full object-cover object-center mix-blend-screen brightness-90 grayscale select-none sm:size-40 md:hidden"
+          alt="Headshot of Sandesh facing a camera"
+        />
         <p
           class="heading-4 relative w-full max-w-[40ch] leading-snug font-medium text-balance"
         >
           I'm a Computer Science Engineering graduate from GGSIPU with hands-on
-          experience building mobile apps at scale. I've worked as an SDE-1
-          at NAVAN and published AI/ML research in a Springer journal.
+          experience building mobile apps at scale. I've worked as an SDE-1 at
+          NAVAN and published AI/ML research in a Springer journal.
         </p>
 
         <div
@@ -59,9 +67,9 @@
             Creating great experiences is my primary focus. I ensure each
             project leaves users with a feel-good sensation through meticulous
             attention to detail and user-centric design principles. <br /><br />
-            I hold a filed patent for interactive digital avatars and have led tech
-            communities as CESTA President and GDSC Co-Lead. Proficient in Kotlin,
-            Swift, Dart, Python, and modern frameworks.
+            I hold a filed patent for interactive digital avatars and have led
+            tech communities as CESTA President and GDSC Co-Lead. Proficient in
+            Kotlin, Swift, Dart, Python, and modern frameworks.
           </p>
         </div>
       </div>
