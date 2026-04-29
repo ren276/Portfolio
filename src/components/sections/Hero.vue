@@ -38,8 +38,9 @@
             </div>
 
             <p class="sr-only">
-              A hireable full-stack developer, open to new opportunities, using cutting-edge technologies to
-              deliver comprehensive solutions for your business.
+              A hireable full-stack developer, open to new opportunities, using
+              cutting-edge technologies to deliver comprehensive solutions for
+              your business.
             </p>
             <p
               v-html="whoAmI"
@@ -48,7 +49,10 @@
             ></p>
 
             <div class="relative origin-left overflow-hidden sm:scale-150">
-              <div id="contact-btn" class="flex items-center gap-4 -translate-y-full">
+              <div
+                id="contact-btn"
+                class="flex -translate-y-full items-center gap-4"
+              >
                 <!-- <Button
                   :data-cal-namespace="dataCalNamespace"
                   :data-cal-link="dataCalLink"
@@ -56,8 +60,15 @@
                   class="contact"
                   label="Get in touch"
                 /> -->
-                <Button label="Get in touch" url="mailto:sandeshverma0311@gmail.com" />
-                <Button label="Resume" url="https://drive.google.com/file/d/1FJAB3BEwyZxEQwBxaxRJtRVYyk0Db3k8/view?usp=sharing" target="_blank" />
+                <Button
+                  label="Get in touch"
+                  url="mailto:sandeshverma0311@gmail.com"
+                />
+                <Button
+                  label="Resume"
+                  url="https://drive.google.com/file/d/13k_4BR1daNU6-AEnfhBEj-bcJ06uc2JL/view?usp=sharing"
+                  target="_blank"
+                />
               </div>
             </div>
           </div>
