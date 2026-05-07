@@ -13,6 +13,9 @@ function raf(time: number) {
 }
 
 const app = createApp(App);
+import { inject } from '@vercel/analytics';
+
+inject();
 app.mount('#app');
 
 export { raf, lenis };

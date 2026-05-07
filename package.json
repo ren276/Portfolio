@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",
+    "@vercel/analytics": "^2.0.1",
     "@vueuse/core": "^13.0.0",
     "gsap": "^3.12.7",
     "lenis": "^1.2.3",

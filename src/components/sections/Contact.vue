@@ -19,7 +19,7 @@
         <p
           class="heading-4 text-flax-smoke-300 max-w-[30ch] text-center font-mono"
         >
-          Your design is a masterpiece waiting to become alive.
+          Your ideas are just waiting to be built.
         </p>
         <h3
           id="make-it-happen"

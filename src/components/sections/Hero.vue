@@ -95,12 +95,12 @@
               class="absolute right-0 bottom-0 flex translate-y-full flex-col items-end"
             >
               <p
-                class="3xl:text-base block leading-snug font-medium -tracking-tight uppercase"
+                class="3xl:text-base block leading-snug font-medium -tracking-tight uppercase animate-float-3d"
               >
                 Available for new opportunities
               </p>
               <h3
-                class="3xl:heading-1 heading-1-alt font-fancy block leading-none font-bold -tracking-tight"
+                class="3xl:heading-1 heading-1-alt font-fancy block leading-none font-bold -tracking-tight animate-glow"
               >
                 {{ AvailableForWorkDate }}
               </h3>
@@ -131,3 +131,37 @@
     AvailableForWorkDate.value = getAvailableForWorkDate();
   });
 </script>
+
+<style scoped>
+.animate-float-3d {
+  animation: float3d 6s ease-in-out infinite;
+  display: inline-block;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+@keyframes float3d {
+  0%, 100% {
+    transform: translateY(0) rotateX(0) rotateY(0);
+  }
+  50% {
+    transform: translateY(-8px) rotateX(15deg) rotateY(-10deg);
+  }
+}
+
+.animate-glow {
+  background: linear-gradient(90deg, #8c8c73, #e5e5cb, #8c8c73);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 4s linear infinite;
+  display: inline-block;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+</style>
