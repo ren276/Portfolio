@@ -54,7 +54,7 @@ const socialLinks = [
 const resourceLinks = [
   {
     label: 'Resume',
-    url: 'https://drive.google.com/file/d/13k_4BR1daNU6-AEnfhBEj-bcJ06uc2JL/view?usp=sharing',
+    url: 'https://drive.google.com/file/d/1eMyzv8wPggeHV0qzZ452yMOp2c50PLIj/view?usp=sharing',
   },
   {
     label: 'UI Design by Huy',
