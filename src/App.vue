@@ -59,6 +59,7 @@
   </main>
 
   <Footer />
+  <SpeedInsights />
 </template>
 
 <script setup lang="ts">
@@ -84,6 +85,7 @@
   import { Navbar } from './components/common';
   import { lenis, raf } from './main';
   import { fetchResumeUrl } from '@/functions/resumeState';
+  import { SpeedInsights } from '@vercel/speed-insights/vue';
   const { width, height } = useWindowSize();
   const noise: Ref<HTMLElement | null> = ref(null);
 
@@ -108,7 +110,7 @@
     document.body.classList.add('stop-scrolling');
     // Fetch the dynamic resume URL
     fetchResumeUrl();
-    
+
     // TODO:
     // window.scrollTo(0, 0);
 
