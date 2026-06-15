@@ -54,7 +54,7 @@ const socialLinks = [
 const resourceLinks = [
   {
     label: 'Resume',
-    url: 'https://drive.google.com/file/d/1eMyzv8wPggeHV0qzZ452yMOp2c50PLIj/view?usp=sharing',
+    url: '', // Dynamically handled in components via resumeState
   },
   {
     label: 'UI Design by Huy',

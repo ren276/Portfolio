@@ -38,7 +38,7 @@
           <span
             class="loading-text absolute bottom-10 left-5 inline-block font-mono sm:left-14"
           >
-            Version 1.2v
+            Version 1.3v
           </span>
 
           <span
