@@ -33,43 +33,32 @@
     </div>
 
     <div
-      class="sm:column-gap relative mt-12 grid size-full grid-cols-12 lg:mt-[10%]"
+      @mouseenter="showCursor"
+      @mouseleave="hideCursor"
+      class="sm:column-gap relative mt-12 grid size-full grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 lg:mt-[10%]"
     >
-      <div
-        class="text-flax-smoke-100 sticky top-12 col-span-5 hidden h-fit w-full overflow-hidden text-[22vw] leading-[0.8] font-semibold md:flex"
-      >
-        <span class="font-title! relative -tracking-wider">0</span>
-        <span
-          id="index"
-          class="font-title! relative -tracking-wider will-change-transform"
-          >{{ index + 1 }}.</span
-        >
-      </div>
-      <aside
-        @mouseenter="showCursor"
-        @mouseleave="hideCursor"
-        class="relative col-span-full flex flex-col space-y-10 md:col-span-7"
-      >
         <div
           v-for="(work, i) in selectedWorksProps"
           :key="i"
-          class="work-card @container"
+          class="work-card @container flex flex-col"
         >
           <!-- Clickable card area -->
           <a class="group" target="_blank" :href="work.url">
             <div
-              class="flex-center relative aspect-square overflow-clip rounded-lg"
+              class="flex-center relative aspect-[16/10] overflow-clip rounded-lg border border-flax-smoke-300/20 bg-flax-smoke-900/40"
             >
               <img
+                v-if="work.imageBg"
                 alt="work-background"
                 loading="lazy"
-                class="absolute size-full object-cover select-none"
+                class="absolute size-full object-cover select-none opacity-50 blur-sm"
                 :src="work.imageBg"
               />
               <div
-                class="flex-center z-10 aspect-4/3 size-full overflow-clip rounded-lg object-cover"
+                class="flex-center z-10 size-full overflow-clip rounded-lg object-cover"
               >
                 <video
+                  v-if="work.videoSrc"
                   ref="videoRefs"
                   :src="work.videoSrc"
                   muted
@@ -77,9 +66,14 @@
                   type="video/webm"
                   class="size-[80%] rounded-md object-contain blur transition-all duration-500 ease-in-out"
                 ></video>
+                <img
+                  v-else-if="work.imageMain"
+                  :src="work.imageMain"
+                  class="size-[80%] rounded-md object-contain transition-all duration-500 ease-in-out"
+                />
               </div>
             </div>
-            <div class="mt-4">
+            <div class="mt-4 flex-1">
               <p class="heading-6 font-title! mb-2 leading-none">
                 {{ work.category }}
               </p>
@@ -111,7 +105,7 @@
           <button
             v-if="work.details"
             @click.stop="toggleDetails(i)"
-            class="view-details-btn mt-3 flex items-center gap-2 text-sm font-semibold tracking-widest uppercase transition-colors duration-300"
+            class="view-details-btn mt-6 flex items-center gap-2 text-sm font-semibold tracking-widest uppercase transition-colors duration-300"
             :class="
               openCards.has(i)
                 ? 'text-flax-smoke-100'
@@ -207,7 +201,6 @@
             </div>
           </Transition>
         </div>
-      </aside>
     </div>
   </section>
 </template>
@@ -216,7 +209,6 @@
   import { animateSplitText } from '@/animations';
   import { textSplitterIntoChar } from '@/functions';
   import {
-    computed,
     onBeforeMount,
     onMounted,
     ref,
@@ -224,15 +216,10 @@
     useTemplateRef,
   } from 'vue';
   import gsap from 'gsap';
-  import { useWindowSize } from '@vueuse/core';
   import { work1, work2 } from '@/assets/videos';
-  import { workBg1, workBg2 } from '@/assets/images';
+  import { workBg1, workBg2, flow, stash } from '@/assets/images';
   const videoRefs = useTemplateRef<HTMLVideoElement[]>('videoRefs');
 
-  const isSmallScreen = computed(() => {
-    return useWindowSize().width.value < 768;
-  });
-  const index = ref(0);
   const selectedWorks = ref('Selected Projects /');
 
   // Track which cards have their details panel open
@@ -313,50 +300,55 @@
         ],
       },
     },
+    {
+      name: 'Flow – Seamless AI Context Transfer',
+      category: 'Browser Extension',
+      tags: ['Vanilla JS', 'Orama', 'Chrome APIs', 'MV3'],
+      videoSrc: null,
+      imageBg: flow,
+      imageMain: flow,
+      url: 'https://github.com/ren276',
+      year: '2026',
+      details: {
+        overview:
+          'Flow is a powerful, privacy-first browser extension designed to effortlessly transfer conversation context between major AI platforms (ChatGPT, Claude, Gemini, Grok).',
+        techStack: 'Vanilla JavaScript · Orama · Chrome Extension APIs',
+        achievements: [
+          'Instant Context Handoff between ChatGPT, Claude, Gemini, and Grok',
+          'Semantic Search History (RAG) using an embedded Vector DB (Orama)',
+          'Live Token Tracking via Shadow DOM-isolated progress bar',
+          'Automated Compression via Gemini API to bypass context limits',
+        ],
+        links: [
+          { label: 'GitHub', url: 'https://github.com/ren276' },
+        ],
+      },
+    },
+    {
+      name: 'Stash – Professional Resource Manager',
+      category: 'Browser Extension',
+      tags: ['React 19', 'TypeScript', 'IndexedDB', 'GSAP'],
+      videoSrc: null,
+      imageBg: stash,
+      imageMain: stash,
+      url: 'https://github.com/ren276',
+      year: '2026',
+      details: {
+        overview:
+          'Local-First Professional Resource Manager & Form Autofiller that eliminates the friction of job applications by detecting job postings and injecting data into forms.',
+        techStack: 'React 19 · TypeScript · GSAP · IndexedDB + Dexie.js · Tailwind CSS',
+        achievements: [
+          'Smart Form Injection with one-click "Magic Fill"',
+          'Frictionless Job Tracking for LinkedIn, Wellfound, Indeed, and major ATS platforms',
+          'Global Command Palette (Alt + S) for fast spotlight search',
+          '100% Local Privacy with IndexedDB and no cloud sync',
+        ],
+        links: [
+          { label: 'GitHub', url: 'https://github.com/ren276' },
+        ],
+      },
+    },
   ];
-
-  // Reusable function to handle forward scroll animation
-  const createForwardTimeline = (
-    index: any,
-    i: any,
-    selectedWorksProps: any[],
-  ) => {
-    const tl = gsap.timeline({
-      defaults: { duration: 0.3 },
-    });
-
-    // Set and move the #index element
-    tl.set('#index', {
-      yPercent: 100,
-      onComplete: () => {
-        index.value = Math.min(i, selectedWorksProps.length - 1);
-      },
-    }).to('#index', {
-      yPercent: 0,
-      ease: 'power1.inOut',
-    });
-
-    return tl;
-  };
-
-  // Reusable function to handle backward scroll animation
-  const createBackwardTimeline = (index: any, i: any) => {
-    const tl = gsap.timeline({ defaults: { duration: 0.3 } });
-
-    // Set and move the #index element
-    tl.set('#index', {
-      yPercent: -100,
-      onComplete: () => {
-        index.value = Math.max(i, 0);
-      },
-    }).to('#index', {
-      yPercent: 0,
-      duration: 0.3,
-      ease: 'power1.inOut',
-    });
-
-    return tl;
-  };
 
   const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
@@ -399,46 +391,6 @@
       0.01,
       0,
     );
-
-    // Apply GSAP animations to each div
-    if (!isSmallScreen.value)
-      gsap.utils.toArray('.work-card').forEach((div: any, i: any) => {
-        gsap.timeline({ defaults: { duration: 0.7 } }).to(div, {
-          scrollTrigger: {
-            trigger: div,
-            start: 'top 25%',
-            end: 'bottom 25%',
-            scrub: 0.01,
-            onLeaveBack: () => {
-              // Backward scroll animation
-              if (index.value !== 0) {
-                gsap.to('#index', {
-                  yPercent: 100,
-                  duration: 0.3,
-                  ease: 'power4.inOut',
-                  onComplete: () => {
-                    createBackwardTimeline(index, i - 1);
-                  },
-                });
-              }
-            },
-          },
-          ease: 'power1.inOut',
-          onComplete: () => {
-            // Forward scroll animation
-            if (index.value !== selectedWorksProps.length - 1) {
-              gsap.to('#index', {
-                yPercent: -100,
-                duration: 0.3,
-                ease: 'power4.inOut',
-                onComplete: () => {
-                  createForwardTimeline(index, i + 1, selectedWorksProps);
-                },
-              });
-            }
-          },
-        });
-      });
   });
 </script>
 

@@ -35,12 +35,23 @@
       </div>
 
       <div
-        class="col-span-5 place-content-center max-sm:place-content-end md:col-span-3"
+        class="col-span-5 place-content-center max-sm:place-content-end md:col-span-3 space-y-2"
       >
-        <p class="heading-6 font-bold uppercase">Sandesh's Local time</p>
-        <p class="heading-6">{{ myLocalTime }}</p>
-        <p class="heading-6 font-bold uppercase">Your Local time</p>
-        <p class="heading-6">{{ userLocalTime }}</p>
+        <div>
+          <p class="heading-6 font-bold uppercase">Sandesh's Local time</p>
+          <p class="heading-6">{{ myLocalTime }}</p>
+        </div>
+        <div>
+          <p class="heading-6 font-bold uppercase">Your Local time</p>
+          <p class="heading-6">{{ userLocalTime }}</p>
+        </div>
+        <div>
+          <p class="heading-6 font-bold uppercase">Views</p>
+          <p class="heading-6 font-semibold text-flax-smoke-300">
+            <span v-if="visitCount !== null">{{ visitCount }}</span>
+            <span v-else class="opacity-50">Loading...</span>
+          </p>
+        </div>
       </div>
 
       <div
@@ -87,20 +98,32 @@
 <script setup lang="ts">
   import { navbarLinks, resourceLinks, socialLinks } from '@/data';
   import { Link } from '..';
-  import { onMounted, ref } from 'vue';
+  import { onMounted, ref, computed } from 'vue';
   import { lenis } from '@/main';
   import MagneticEffect from '../MagneticEffect.vue';
   import moment from 'moment-timezone';
+  import { resumeUrl } from '@/functions/resumeState';
+
+  // Make links list computed so it dynamically reacts to resumeUrl change
+  const computedResourceLinks = computed(() => {
+    return resourceLinks.map(link => {
+      if (link.label === 'Resume') {
+        return { ...link, url: resumeUrl.value };
+      }
+      return link;
+    });
+  });
 
   // Combine footer sections dynamically
-  const footerSections = [
+  const footerSections = computed(() => [
     { title: 'Menu', links: navbarLinks },
     { title: 'Socials', links: socialLinks },
-    { title: 'Resources', links: resourceLinks },
-  ];
+    { title: 'Resources', links: computedResourceLinks.value },
+  ]);
 
   const myLocalTime = ref('');
   const userLocalTime = ref('');
+  const visitCount = ref<number | null>(null);
 
   onMounted(() => {
     myLocalTime.value = moment.tz('Asia/Kolkata').format('h:mm:ss a');
@@ -113,5 +136,23 @@
     setInterval(() => {
       userLocalTime.value = moment.tz(userTimeZone).format('h:mm:ss a');
     }, 1000);
+
+    // Visitor Counter implementation
+    const hasVisited = sessionStorage.getItem('has_visited_sandesh_portfolio');
+    const apiNamespace = 'sandeshverma-portfolio';
+    const apiRoot = `https://api.counterapi.dev/v1/${apiNamespace}/visits`;
+    const fetchUrl = hasVisited ? apiRoot : `${apiRoot}/up`;
+
+    fetch(fetchUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && typeof data.count === 'number') {
+          visitCount.value = data.count;
+          sessionStorage.setItem('has_visited_sandesh_portfolio', 'true');
+        }
+      })
+      .catch((err) => {
+        console.error('Error fetching visitor counter:', err);
+      });
   });
 </script>

@@ -5,5 +5,6 @@ import Works from './Works.vue';
 import aboutMe from './aboutMe.vue';
 import People from './People.vue';
 import ResearchPatents from './ResearchPatents.vue';
+import GithubActivity from './GithubActivity.vue';
 
-export { Hero, People, Works, aboutMe, Services, Contact, ResearchPatents };
+export { Hero, People, Works, aboutMe, Services, Contact, ResearchPatents, GithubActivity };

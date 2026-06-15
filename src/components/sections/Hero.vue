@@ -66,7 +66,7 @@
                 />
                 <Button
                   label="Resume"
-                  url="https://drive.google.com/file/d/1eMyzv8wPggeHV0qzZ452yMOp2c50PLIj/view?usp=sharing"
+                  :url="resumeUrl"
                   target="_blank"
                 />
               </div>
@@ -119,7 +119,7 @@
   import { Button } from '@/components/common';
   import { profile2 as profile } from '@/assets/images';
   import { getAvailableForWorkDate, textSplitterIntoChar } from '@/functions';
-  // import { dataCalConfig, dataCalLink, dataCalNamespace } from '@/data';
+  import { resumeUrl } from '@/functions/resumeState';
 
   const whoAmI = ref(
     'Mobile & Full-Stack Developer | Android · iOS · Flutter · AI/ML',

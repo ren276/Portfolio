@@ -18,6 +18,7 @@
     class="bg-flax-smoke-950 fixed top-[1dvh] right-0 z-9998 h-[98dvh] w-full translate-x-full rounded-s-lg p-5 will-change-auto select-none focus:outline-hidden max-md:w-[98%] sm:p-10 md:w-3/5 md:px-20 lg:w-2/5"
   >
     <Circles id="circles" class="absolute top-0 right-0 opacity-25" />
+    <img :src="waving" class="absolute bottom-0 -right-2 md:-right-4 w-40 md:w-56 opacity-90 pointer-events-none" alt="Sandesh Waving" />
     <div class="flex h-full flex-col items-center justify-between">
       <div class="relative z-19 w-full">
         <ul
@@ -126,6 +127,8 @@
   import { Link, BurgerMenuBtn, MagneticEffect } from '..';
   import { Circles } from '../design';
   import { Button } from '../common';
+
+  import { waving } from '@/assets/images';
 
   import {
     animateNavbarEnter,

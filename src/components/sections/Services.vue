@@ -1,5 +1,5 @@
 <template>
-  <section id="services" class="padding-x mb-20">
+  <section id="services" class="padding-x mb-20 overflow-hidden">
     <div class="flex w-full flex-col">
       <h3
         id="what-i-do"
@@ -14,20 +14,22 @@
         <p
           class="heading-6 text-flax-smoke-300/85 col-span-4 col-start-0 text-center text-nowrap md:col-start-4"
         >
-          ( SERVICES )
+          ( TECH STACK )
         </p>
         <p
           class="heading-4 font-fancy col-span-8 w-full text-balance sm:font-semibold md:col-span-5"
         >
-          User-Friendly interface don't happen by chance, they are built with
-          intention. I code intuitive responsive solutions that make your users'
-          journey effortless
+          A selection of modern technologies and frameworks I use to build scalable, high-performance applications.
         </p>
       </div>
     </div>
 
+    <!-- Tech Stack Grid -->
     <div class="relative mt-12 w-full lg:mt-[10%]">
-      <div class="mt-12 flex flex-col justify-between gap-y-16">
+      <div 
+        class="grid grid-cols-1 md:grid-cols-2 gap-6"
+        id="bento-grid"
+      >
         <ServicesCard
           v-for="(card, index) in servicesCardProps"
           :key="index"
@@ -36,8 +38,7 @@
           :body="card.body"
           :headings="card.headings"
           :shape="card.shape"
-          class="border-flax-smoke-500/50 sticky border-t bg-[#0B0B0A]"
-          :class="getStyle(index)"
+          class="bento-card bg-[#111111] border border-flax-smoke-500/20 hover:border-flax-smoke-500/60 transition-colors shadow-2xl shadow-black/50 opacity-0 translate-y-12"
         />
       </div>
     </div>
@@ -47,36 +48,42 @@
 <script setup lang="ts">
   import { animateSplitText } from '@/animations';
   import { textSplitterIntoChar } from '@/functions';
-  import { onBeforeMount, onMounted, ref } from 'vue';
+  import { onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
   import { ServicesCard } from '..';
   import { servicesData } from '@/data';
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
 
-  const whatIDo = ref('My services /');
+  gsap.registerPlugin(ScrollTrigger);
+
+  const whatIDo = ref('Tech Stack /');
   const servicesCardProps = servicesData;
 
   onBeforeMount(() => {
-    whatIDo.value = textSplitterIntoChar('What I do /', true);
+    whatIDo.value = textSplitterIntoChar('Tech Stack /', true);
   });
 
   onMounted(() => {
     animateSplitText('#what-i-do .letters', '#services-text', 0.7, 0.01, 0);
+
+    // Bento Grid Stagger Animation
+    let ctx = gsap.context(() => {
+      gsap.to('.bento-card', {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#bento-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
+    onUnmounted(() => {
+      ctx.revert();
+    });
   });
-
-  const getStyle = (index: number) => {
-    if (index === 0) {
-      return 'top-[calc(20vh_+_0em)] mb-[17.25em]';
-    }
-
-    if (index === 1) {
-      return 'top-[calc(20vh_+_5.75em)] mb-[11.5em]';
-    }
-
-    if (index === 2) {
-      return 'top-[calc(20vh_+_11.5em)] mb-[5.75em]';
-    }
-
-    if (index === 3) {
-      return 'top-[calc(20vh_+_17.25em)] mb-[0em]';
-    }
-  };
 </script>

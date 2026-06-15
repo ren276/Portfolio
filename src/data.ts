@@ -7,7 +7,7 @@ export type navLinkType = {
 // Nav
 const navLinks = [
   {
-    label: 'Services',
+    label: 'Tech Stack',
     url: '#services',
   },
   {

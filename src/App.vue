@@ -48,6 +48,7 @@
       class="text-flax-smoke-200 relative rounded-t-3xl bg-[#0B0B0A] py-[5%]"
     >
       <Services />
+      <GithubActivity />
       <Marquee />
       <Works />
       <ResearchPatents />
@@ -64,6 +65,7 @@
   import {
     Hero,
     Services,
+    GithubActivity,
     Works,
     ResearchPatents,
     aboutMe,
@@ -81,6 +83,7 @@
 
   import { Navbar } from './components/common';
   import { lenis, raf } from './main';
+  import { fetchResumeUrl } from '@/functions/resumeState';
   const { width, height } = useWindowSize();
   const noise: Ref<HTMLElement | null> = ref(null);
 
@@ -103,6 +106,9 @@
 
   onMounted(() => {
     document.body.classList.add('stop-scrolling');
+    // Fetch the dynamic resume URL
+    fetchResumeUrl();
+    
     // TODO:
     // window.scrollTo(0, 0);
 
