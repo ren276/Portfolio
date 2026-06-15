@@ -30,7 +30,7 @@
       <div class="col-span-7 place-content-center md:col-span-6">
         <h6 class="heading-4 sm:heading-2 leading-none font-bold">
           © {{ new Date().getFullYear() }} Sandesh Verma <br />
-          <span class="text-sm sm:text-lg font-normal">UI Design and Portfolio by Huy</span>
+          <span class="text-sm sm:text-lg font-normal">UI Design and Portfolio by Huy | v1.3</span>
         </h6>
       </div>
 

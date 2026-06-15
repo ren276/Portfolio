@@ -38,9 +38,7 @@
             </div>
 
             <p class="sr-only">
-              A hireable full-stack developer, open to new opportunities, using
-              cutting-edge technologies to deliver comprehensive solutions for
-              your business.
+              A hireable Software Development Engineer specializing in Android, iOS, Flutter, Kotlin, React, and Machine Learning. Open to new opportunities to deliver privacy-first, cutting-edge solutions for your business.
             </p>
             <p
               v-html="whoAmI"
