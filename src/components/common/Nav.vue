@@ -19,10 +19,10 @@
   >
     <Circles id="circles" class="absolute top-0 right-0 opacity-25" />
     <img :src="waving" class="absolute bottom-0 -right-2 md:-right-4 w-40 md:w-56 opacity-90 pointer-events-none" alt="Sandesh Waving" />
-    <div class="flex h-full flex-col items-center justify-between">
-      <div class="relative z-19 w-full">
+    <div class="flex h-full flex-col justify-between overflow-y-auto no-scrollbar">
+      <div class="relative w-full shrink-0">
         <ul
-          class="heading-2 text-flax-smoke-50 mt-12 font-bold md:mt-24"
+          class="heading-2 text-flax-smoke-50 mt-6 font-bold md:mt-16"
           id="navLinks"
         >
           <li
@@ -49,8 +49,8 @@
         </ul>
       </div>
 
-      <div class="w-full">
-        <div class="text-flax-smoke-50 mt-2 h-full font-normal">
+      <div class="w-full shrink-0 pt-6 pb-4">
+        <div class="text-flax-smoke-50 font-normal">
           <p class="text-left text-sm font-bold uppercase">Email address</p>
           <Link
             class="font-medium tracking-wider"
@@ -58,7 +58,7 @@
             label="sandeshverma0311@gmail.com"
             url="mailto:sandeshverma0311@gmail.com"
           />
-          <div class="mt-6 flex flex-wrap justify-start gap-1">
+          <div class="mt-4 flex flex-wrap justify-start gap-2">
             <Button
               class="contact border-flax-smoke-600 border opacity-0"
               v-for="social in socialLinks"
