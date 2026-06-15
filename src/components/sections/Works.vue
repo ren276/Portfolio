@@ -278,7 +278,7 @@
       },
     },
     {
-      name: 'Sentinel — ML Observability Platform',
+      name: 'Sentinels — ML Observability Platform',
       category: 'AI/ML & Full-Stack',
       tags: ['FastAPI', 'Kafka', 'Llama 3.2', 'Next.js 15'],
       videoSrc: work2,
@@ -331,7 +331,7 @@
       videoSrc: null,
       imageBg: stash,
       imageMain: stash,
-      url: 'https://github.com/ren276',
+      url: 'https://github.com/ren276/Stash',
       year: '2026',
       details: {
         overview:
