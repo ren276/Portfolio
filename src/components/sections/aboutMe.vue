@@ -37,6 +37,9 @@
       >
         <img
           :src="profile2"
+          width="400"
+          height="400"
+          loading="lazy"
           class="aspect-square w-full rounded-full object-cover object-center mix-blend-screen brightness-90 grayscale"
           alt="Headshot of Sandesh facing a camera"
         />
@@ -46,6 +49,9 @@
       <div class="mt-10 md:col-span-8 md:col-start-6">
         <img
           :src="profile2"
+          width="160"
+          height="160"
+          loading="lazy"
           class="pointer-events-none float-left mr-6 mb-3 aspect-square size-32 rounded-full object-cover object-center mix-blend-screen brightness-90 grayscale select-none sm:size-40 md:hidden"
           alt="Headshot of Sandesh facing a camera"
         />

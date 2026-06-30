@@ -13,6 +13,8 @@
         muted
         loop
         playsinline
+        preload="none"
+        aria-hidden="true"
       ></video>
       <!-- :style="'background-image: url(' + contact + ') !important; '" -->
       <div class="flex-center z-10 flex-col gap-y-10">

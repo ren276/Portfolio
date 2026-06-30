@@ -1,18 +1,22 @@
 <!doctype html>
 <html lang="en">
   <head lang="en">
+    <!-- Self-hosted font preload — eliminates render-blocking Google Fonts -->
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      href="/assets/fonts/BricolageGrotesque.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
-      />
-    </noscript>
+
+    <!-- LCP image preload — fixes mobile LCP 5.4s by making profile image discoverable in initial HTML -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/profile2.webp"
+      fetchpriority="high"
+    />
 
     <meta name="color-scheme" content="light" />
 
@@ -24,34 +28,34 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta
       name="description"
-      content="Sandesh Verma - Software Development Engineer specializing in Android, Flutter, Kotlin, React, and AI/ML. Explore my portfolio of privacy-first apps, IoT projects, and distributed systems."
+      content="Sandesh Verma is an Android Engineer (SDE-1) at Navan with expertise in Kotlin, Jetpack Compose, Vue.js, and distributed systems. GGSIPU CS graduate (9.16 CGPA). Open to Android, SWE, and AI/ML roles."
     />
     <meta
       name="keywords"
-      content="Sandesh Verma, full-stack developer, mobile developer, flutter developer, android developer, kotlin developer, jetpack compose, react, fastapi, machine learning, ai engineer, software engineer, portfolio, freelance developer"
+      content="Sandesh Verma, Android Engineer, Android Developer India, Kotlin Developer, Full Stack Developer Delhi, GGSIPU, Navan Android, Jetpack Compose, SDE"
     />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Sandesh Verma" />
     <meta
       itemprop="image"
-      content="./og-pic.webp"
+      content="https://www.sandeshverma.dev/og-pic.webp"
     />
-    <link rel="canonical" href="https://sandeshverma.dev/" />
+    <link rel="canonical" href="https://www.sandeshverma.dev/" />
 
-    <!-- Open Graph Meta Tags  -->
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1100" />
-    <meta property="og:image:height" content="1000" />
-    <meta property="og:image" content="./og-pic.webp" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="https://www.sandeshverma.dev/og-pic.webp" />
     <meta
       property="og:title"
-      content="Sandesh Verma | Mobile & Full-Stack Developer"
+      content="Sandesh Verma — Android Engineer & Full Stack Developer"
     />
     <meta
       property="og:description"
-      content="Software Development Engineer specializing in Android, Flutter, Kotlin, React, and AI/ML. Explore my portfolio."
+      content="Android Engineer at Navan. Builder of Sentinel, Strata, and Stash. GGSIPU CS 2025 (9.16 CGPA). Open to Android, SWE, and AI/ML roles."
     />
-    <meta property="og:url" content="https://sandeshverma.dev/" />
+    <meta property="og:url" content="https://www.sandeshverma.dev/" />
     <meta
       property="og:site_name"
       content="Sandesh Verma | Portfolio"
@@ -63,21 +67,21 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Sandesh Verma | Mobile & Full-Stack Developer"
+      content="Sandesh Verma — Android Engineer & Full Stack Developer"
     />
     <meta
       name="twitter:description"
-      content="Software Development Engineer specializing in Android, Flutter, Kotlin, React, and AI/ML. Explore my portfolio."
+      content="Android Engineer at Navan. Builder of Sentinel, Strata, Stash. GGSIPU CS 2025."
     />
     <meta name="twitter:image:type" content="image/webp" />
-    <meta name="twitter:image:width" content="2400" />
-    <meta name="twitter:image:height" content="1260" />
+    <meta name="twitter:image:width" content="1200" />
+    <meta name="twitter:image:height" content="630" />
     <meta
       name="twitter:image:alt"
-      content="Sandesh Verma - Mobile & Full-Stack Developer"
+      content="Sandesh Verma — Android Engineer & Full Stack Developer"
     />
-    <meta name="twitter:image" content="./og-pic.webp" />
-    <meta name="twitter:url" content="https://sandeshverma.dev/" />
+    <meta name="twitter:image" content="https://www.sandeshverma.dev/og-pic.webp" />
+    <meta name="twitter:url" content="https://www.sandeshverma.dev/" />
 
     <!-- Robots Meta Tags -->
     <meta name="robots" content="index,follow" />
@@ -86,8 +90,6 @@
     <!-- Additional Meta Tags -->
     <meta name="revisit-after" content="7 days" />
     <meta name="generator" content="Vite" />
-    <meta name="mssmarttagspreventparsing" content="true" />
-    <meta name="no-cache" content="no-cache" />
     <meta name="google" content="notranslate" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -135,7 +137,7 @@
       href="/apple-touch-icon-180x180.png"
     />
 
-    <title>Sandesh Verma | Mobile & Full-Stack Developer</title>
+    <title>Sandesh Verma — Android Engineer & Full Stack Developer | Delhi, India</title>
   </head>
 
   <body>
@@ -151,10 +153,11 @@
           "name": "Sandesh Verma",
           "givenName": "Sandesh",
           "familyName": "Verma",
-          "jobTitle": "Software Development Engineer",
-          "description": "Mobile & Full-Stack Developer experienced in Android, iOS, Flutter, and AI/ML helping startups worldwide.",
-          "image": "https://sandeshverma.dev/og-pic.webp",
-          "url": "https://sandeshverma.dev/",
+          "jobTitle": "Android Engineer & Full Stack Developer",
+          "description": "Android Engineer (SDE-1) at Navan with experience in Kotlin, Android, Vue.js, and distributed systems. CS graduate from GGSIPU (9.16 CGPA).",
+          "image": "https://www.sandeshverma.dev/assets/images/profile2.webp",
+          "url": "https://www.sandeshverma.dev/",
+          "mainEntityOfPage": "https://www.sandeshverma.dev/",
           "sameAs": [
             "https://github.com/ren276",
             "https://linkedin.com/in/sandeshverma"
@@ -168,13 +171,51 @@
             "@type": "Organization",
             "name": "Navan"
           },
-          "knowsAbout": ["Kotlin", "Android Development", "Flutter", "React", "Python", "Machine Learning", "Clean Architecture", "FastAPI"]
+          "knowsAbout": ["Android Development", "Kotlin", "Jetpack Compose", "Vue.js", "Full Stack Development", "Distributed Systems", "Machine Learning", "FastAPI"]
         },
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "name": "Sandesh Verma | Mobile & Full-Stack Developer",
-          "url": "https://sandeshverma.dev/"
+          "name": "Sandesh Verma | Android Engineer & Full Stack Developer",
+          "url": "https://www.sandeshverma.dev/"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Projects by Sandesh Verma",
+          "itemListElement": [
+            {
+              "@type": "SoftwareSourceCode",
+              "position": 1,
+              "name": "Strata – Visual Stories for Strava",
+              "description": "Android app for generating and sharing visual stories from Strava workout data with custom image editor",
+              "codeRepository": "https://github.com/sandeshverma0311/strata",
+              "programmingLanguage": ["Kotlin", "Jetpack Compose"]
+            },
+            {
+              "@type": "SoftwareSourceCode",
+              "position": 2,
+              "name": "Sentinels – ML Observability Platform",
+              "description": "Real-time ML telemetry ingestion platform processing 10,000+ metrics/sec with localized Llama 3.2",
+              "codeRepository": "https://github.com/ren276/Sentinels",
+              "programmingLanguage": ["Python", "FastAPI", "Next.js"]
+            },
+            {
+              "@type": "SoftwareSourceCode",
+              "position": 3,
+              "name": "Flow – Seamless AI Context Transfer",
+              "description": "Privacy-first browser extension for transferring conversation context between AI platforms",
+              "programmingLanguage": ["JavaScript"]
+            },
+            {
+              "@type": "SoftwareSourceCode",
+              "position": 4,
+              "name": "Stash – Professional Resource Manager",
+              "description": "Local-first browser extension for job application management with smart form injection",
+              "codeRepository": "https://github.com/ren276/Stash",
+              "programmingLanguage": ["React", "TypeScript"]
+            }
+          ]
         }
       ]
     </script>

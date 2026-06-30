@@ -43,14 +43,17 @@
           class="work-card @container flex flex-col"
         >
           <!-- Clickable card area -->
-          <a class="group" target="_blank" :href="work.url">
+          <a class="group min-h-[44px]" target="_blank" :href="work.url">
             <div
               class="flex-center relative aspect-[16/10] overflow-clip rounded-lg border border-flax-smoke-300/20 bg-flax-smoke-900/40"
             >
               <img
                 v-if="work.imageBg"
-                alt="work-background"
+                alt=""
+                aria-hidden="true"
                 loading="lazy"
+                width="800"
+                height="500"
                 class="absolute size-full object-cover select-none opacity-50 blur-sm"
                 :src="work.imageBg"
               />
@@ -63,12 +66,20 @@
                   :src="work.videoSrc"
                   muted
                   :autoplay="false"
+                  loop
+                  playsinline
+                  preload="none"
+                  aria-hidden="true"
                   type="video/webm"
                   class="size-[80%] rounded-md object-contain blur transition-all duration-500 ease-in-out"
                 ></video>
                 <img
                   v-else-if="work.imageMain"
                   :src="work.imageMain"
+                  :alt="'Screenshot of ' + work.name"
+                  width="400"
+                  height="320"
+                  loading="lazy"
                   class="size-[80%] rounded-md object-contain transition-all duration-500 ease-in-out"
                 />
               </div>

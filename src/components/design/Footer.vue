@@ -28,10 +28,10 @@
 
     <div class="grid w-full grid-cols-12">
       <div class="col-span-7 place-content-center md:col-span-6">
-        <h6 class="heading-4 sm:heading-2 leading-none font-bold">
+        <h2 class="heading-4 sm:heading-2 leading-none font-bold">
           © {{ new Date().getFullYear() }} Sandesh Verma <br />
           <span class="text-sm sm:text-lg font-normal">UI Design and Portfolio by Huy | v1.3</span>
-        </h6>
+        </h2>
       </div>
 
       <div
@@ -101,7 +101,6 @@
   import { onMounted, ref, computed } from 'vue';
   import { lenis } from '@/main';
   import MagneticEffect from '../MagneticEffect.vue';
-  import moment from 'moment-timezone';
   import { resumeUrl } from '@/functions/resumeState';
 
   // Make links list computed so it dynamically reacts to resumeUrl change
@@ -125,30 +124,42 @@
   const userLocalTime = ref('');
   const visitCount = ref<number | null>(null);
 
+  // Format time using native Intl API — replaces moment-timezone (removes 14.7KB from bundle)
+  const formatTime = (timeZone: string): string => {
+    return new Intl.DateTimeFormat('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+      timeZone,
+    }).format(new Date());
+  };
+
   onMounted(() => {
-    myLocalTime.value = moment.tz('Asia/Kolkata').format('h:mm:ss a');
-    setInterval(() => {
-      myLocalTime.value = moment.tz('Asia/Kolkata').format('h:mm:ss a');
-    }, 1000);
-
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    userLocalTime.value = moment.tz(userTimeZone).format('h:mm:ss a');
+
+    myLocalTime.value = formatTime('Asia/Kolkata');
     setInterval(() => {
-      userLocalTime.value = moment.tz(userTimeZone).format('h:mm:ss a');
+      myLocalTime.value = formatTime('Asia/Kolkata');
     }, 1000);
 
-    // Visitor Counter implementation
+    userLocalTime.value = formatTime(userTimeZone);
+    setInterval(() => {
+      userLocalTime.value = formatTime(userTimeZone);
+    }, 1000);
+
+    // Visitor Counter implementation using Vercel proxy to bypass CORS
     const hasVisited = sessionStorage.getItem('has_visited_sandesh_portfolio');
-    const apiNamespace = 'sandeshverma-portfolio';
-    const apiRoot = `https://api.counterapi.dev/v1/${apiNamespace}/visits`;
-    const fetchUrl = hasVisited ? apiRoot : `${apiRoot}/up`;
+    const fetchUrl = hasVisited ? '/api/visit-count' : '/api/visit';
 
     fetch(fetchUrl)
       .then((res) => res.json())
       .then((data) => {
         if (data && typeof data.count === 'number') {
           visitCount.value = data.count;
-          sessionStorage.setItem('has_visited_sandesh_portfolio', 'true');
+          if (!hasVisited) {
+            sessionStorage.setItem('has_visited_sandesh_portfolio', 'true');
+          }
         }
       })
       .catch((err) => {

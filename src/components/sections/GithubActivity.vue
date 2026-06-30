@@ -31,7 +31,11 @@
       <div class="w-full overflow-hidden flex justify-center mt-4 pb-2">
         <img 
           src="https://ghchart.rshah.org/39d353/ren276" 
-          alt="ren276's Github Activity" 
+          alt="ren276's GitHub contribution activity chart" 
+          width="800"
+          height="128"
+          style="aspect-ratio: 800/128"
+          loading="lazy"
           class="w-full max-w-5xl opacity-90 transition-opacity duration-300 hover:opacity-100 dark:invert-0" 
         />
       </div>

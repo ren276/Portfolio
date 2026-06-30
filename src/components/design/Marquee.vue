@@ -1,12 +1,14 @@
 <template>
   <section
     id="marquee-section"
-    class="text-flax-smoke-200 relative mb-50 h-fit w-full overflow-clip leading-none will-change-auto"
+    class="text-flax-smoke-800 relative mb-50 h-fit w-full overflow-clip leading-none will-change-auto"
+    aria-hidden="true"
   >
     <div
       id="marquee-1"
       class="flex h-fit translate-y-0 whitespace-nowrap will-change-transform"
-      role="marquee"
+      role="region"
+      aria-label="Scrolling marquee"
     >
       <h4
         v-for="_ in 2"
@@ -15,7 +17,7 @@
         class="sm:heading-1 flex w-full items-center text-3xl font-bold text-nowrap whitespace-nowrap max-sm:mx-6"
       >
         Full Stack Developer
-        <div class="w-fit scale-50 sm:scale-75">
+        <div class="w-fit scale-50 sm:scale-75 will-change-transform">
           <svg
             class="ms-10 me-10"
             style="width: var(--heading-display)"
@@ -33,7 +35,8 @@
     <div
       id="marquee-2"
       class="absolute bottom-0 z-50 flex h-fit translate-y-full whitespace-nowrap will-change-transform"
-      role="marquee"
+      role="region"
+      aria-label="Scrolling marquee reversed"
     >
       <h4
         v-for="_ in 2"
@@ -42,7 +45,7 @@
         class="sm:heading-1 flex w-full items-center text-3xl font-bold text-nowrap whitespace-nowrap max-sm:mx-6"
       >
         Full Stack Developer
-        <div class="mx-2 inline-block scale-50 sm:scale-75">
+        <div class="mx-2 inline-block scale-50 sm:scale-75 will-change-transform">
           <svg
             class="ms-10 me-10"
             style="width: var(--heading-display)"

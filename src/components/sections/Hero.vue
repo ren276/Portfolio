@@ -79,7 +79,12 @@
             <img
               id="profile-img"
               :src="profile"
-              alt="Sandesh profile"
+              alt="Sandesh Verma — Android Engineer & Full Stack Developer"
+              width="336"
+              height="420"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
               class="size-full scale-90 rounded-lg object-cover object-top brightness-110 grayscale"
             />
           </div>
@@ -148,18 +153,36 @@
 }
 
 .animate-glow {
-  background: linear-gradient(90deg, #8c8c73, #e5e5cb, #8c8c73);
-  background-size: 200% auto;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: shine 4s linear infinite;
+  position: relative;
   display: inline-block;
+  color: #8c8c73;
+  overflow: hidden;
 }
 
-@keyframes shine {
-  to {
-    background-position: 200% center;
+/* Composited shimmer using ::after with transform + opacity only (GPU-accelerated, no CLS) */
+.animate-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(229, 229, 203, 0.6) 50%,
+    transparent 60%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine-composited 3s ease-in-out infinite;
+  will-change: transform;
+  transform: translateX(-100%);
+}
+
+@keyframes shine-composited {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
   }
 }
 </style>
