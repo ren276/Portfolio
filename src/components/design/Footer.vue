@@ -103,7 +103,6 @@
   import { lenis } from '@/main';
   import MagneticEffect from '../MagneticEffect.vue';
   import { resumeUrl } from '@/functions/resumeState';
-  import { Counter } from 'counterapi';
 
   // Make links list computed so it dynamically reacts to resumeUrl change
   const computedResourceLinks = computed(() => {
@@ -150,29 +149,23 @@
       userLocalTime.value = formatTime(userTimeZone);
     }, 1000);
 
-    // Visitor Counter implementation using CounterAPI library
-    const counter = new Counter({ workspace: 'sandesh-vermas-team-4624' });
+    // Visitor Counter implementation via Vercel proxy to bypass adblockers
     const hasVisited = sessionStorage.getItem('has_visited_sandesh_portfolio');
+    const action = hasVisited ? 'get' : 'up';
     
-    if (hasVisited) {
-      counter.get('sandyport_visits')
-        .then((result) => {
-          const res = result as any;
-          if (res && res.data && typeof res.data.up_count === 'number') {
-            visitCount.value = res.data.up_count;
-          }
-        })
-        .catch((err) => console.error('Error fetching visitor counter:', err));
-    } else {
-      counter.up('sandyport_visits')
-        .then((result) => {
-          const res = result as any;
-          if (res && res.data && typeof res.data.up_count === 'number') {
-            visitCount.value = res.data.up_count;
+    fetch(`/api/counter/${action}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const count = data?.data?.up_count;
+        if (typeof count === 'number') {
+          visitCount.value = count;
+          if (!hasVisited) {
             sessionStorage.setItem('has_visited_sandesh_portfolio', 'true');
           }
-        })
-        .catch((err) => console.error('Error incrementing visitor counter:', err));
-    }
+        }
+      })
+      .catch((err) => {
+        console.error('Error with visitor counter:', err);
+      });
   });
 </script>

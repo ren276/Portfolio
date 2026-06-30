@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import sitemap from 'vite-plugin-sitemap';
 import { robots } from 'vite-plugin-robots';
 import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,21 +35,16 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': '/src',
+      '@': path.resolve(__dirname, './src'),
     },
   },
   server: {
     proxy: {
-      '/api/visit-count': {
-        target: 'https://api.counterapi.dev/v1/sandeshverma-portfolio/visits',
+      '/api/counter': {
+        target: 'https://api.counterapi.dev/v2/sandesh-vermas-team-4624/sandyport_visits',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/visit-count/, '')
+        rewrite: (path) => path.replace(/^\/api\/counter/, ''),
       },
-      '/api/visit': {
-        target: 'https://api.counterapi.dev/v1/sandeshverma-portfolio/visits/up',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/visit/, '')
-      }
     },
     watch: {
       usePolling: true,

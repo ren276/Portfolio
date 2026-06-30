@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/api/counter/:match*",
+      "destination": "https://api.counterapi.dev/v2/sandesh-vermas-team-4624/sandyport_visits/:match*"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
