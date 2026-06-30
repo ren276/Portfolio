@@ -83,7 +83,8 @@
 <script setup lang="ts">
   import { earthLottie } from '@/assets/videos';
   import { Button } from '../common';
-  import { Vue3Lottie } from 'vue3-lottie';
+  import { defineAsyncComponent } from 'vue';
+  const Vue3Lottie = defineAsyncComponent(() => import('vue3-lottie').then(m => m.Vue3Lottie));
   import Link from '../Link.vue';
   import { contact } from '@/assets/videos';
   import { onBeforeMount, onMounted, ref } from 'vue';

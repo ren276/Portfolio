@@ -1,14 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/visit-count",
-      "destination": "https://api.counterapi.dev/v1/sandeshverma-portfolio/visits"
-    },
-    {
-      "source": "/api/visit",
-      "destination": "https://api.counterapi.dev/v1/sandeshverma-portfolio/visits/up"
-    }
-  ],
   "headers": [
     {
       "source": "/assets/(.*)",

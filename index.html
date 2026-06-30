@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head lang="en">
+    <!-- Security: CSP Report-Only for tracking potential violations -->
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:;" />
+
     <!-- Self-hosted font preload — eliminates render-blocking Google Fonts -->
     <link
       rel="preload"
-      href="/assets/fonts/BricolageGrotesque.woff2"
+      href="/src/assets/fonts/BricolageGrotesque.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -14,7 +17,7 @@
     <link
       rel="preload"
       as="image"
-      href="/assets/images/profile2.webp"
+      href="/src/assets/images/profile2.webp"
       fetchpriority="high"
     />
 
@@ -155,7 +158,7 @@
           "familyName": "Verma",
           "jobTitle": "Android Engineer & Full Stack Developer",
           "description": "Android Engineer (SDE-1) at Navan with experience in Kotlin, Android, Vue.js, and distributed systems. CS graduate from GGSIPU (9.16 CGPA).",
-          "image": "https://www.sandeshverma.dev/assets/images/profile2.webp",
+          "image": "https://www.sandeshverma.dev/profile2.webp",
           "url": "https://www.sandeshverma.dev/",
           "mainEntityOfPage": "https://www.sandeshverma.dev/",
           "sameAs": [

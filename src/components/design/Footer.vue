@@ -14,7 +14,7 @@
         >
           {{ section.title }}
         </p>
-        <div class="mt-2 space-y-1">
+        <div class="mt-2 space-y-4 sm:space-y-2">
           <p v-for="link in section.links" :key="link.label" class="heading-6">
             <Link
               class="font-medium tracking-wider lowercase"
@@ -49,7 +49,7 @@
           <p class="heading-6 font-bold uppercase">Views</p>
           <p class="heading-6 font-semibold text-flax-smoke-300">
             <span v-if="visitCount !== null">{{ visitCount }}</span>
-            <span v-else class="opacity-50">Loading...</span>
+            <span v-else class="opacity-70">Loading...</span>
           </p>
         </div>
       </div>
@@ -73,6 +73,7 @@
               color="#000000"
               fill="none"
             >
+              <title>Scroll to top</title>
               <path
                 d="M12 4L12 20"
                 stroke="currentColor"
@@ -102,6 +103,7 @@
   import { lenis } from '@/main';
   import MagneticEffect from '../MagneticEffect.vue';
   import { resumeUrl } from '@/functions/resumeState';
+  import { Counter } from 'counterapi';
 
   // Make links list computed so it dynamically reacts to resumeUrl change
   const computedResourceLinks = computed(() => {
@@ -148,22 +150,29 @@
       userLocalTime.value = formatTime(userTimeZone);
     }, 1000);
 
-    // Visitor Counter implementation using Vercel proxy to bypass CORS
+    // Visitor Counter implementation using CounterAPI library
+    const counter = new Counter({ workspace: 'sandesh-vermas-team-4624' });
     const hasVisited = sessionStorage.getItem('has_visited_sandesh_portfolio');
-    const fetchUrl = hasVisited ? '/api/visit-count' : '/api/visit';
-
-    fetch(fetchUrl)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && typeof data.count === 'number') {
-          visitCount.value = data.count;
-          if (!hasVisited) {
+    
+    if (hasVisited) {
+      counter.get('sandyport_visits')
+        .then((result) => {
+          const res = result as any;
+          if (res && res.data && typeof res.data.up_count === 'number') {
+            visitCount.value = res.data.up_count;
+          }
+        })
+        .catch((err) => console.error('Error fetching visitor counter:', err));
+    } else {
+      counter.up('sandyport_visits')
+        .then((result) => {
+          const res = result as any;
+          if (res && res.data && typeof res.data.up_count === 'number') {
+            visitCount.value = res.data.up_count;
             sessionStorage.setItem('has_visited_sandesh_portfolio', 'true');
           }
-        }
-      })
-      .catch((err) => {
-        console.error('Error fetching visitor counter:', err);
-      });
+        })
+        .catch((err) => console.error('Error incrementing visitor counter:', err));
+    }
   });
 </script>

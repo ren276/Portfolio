@@ -6,7 +6,7 @@
   src: url('./assets/fonts/BricolageGrotesque.woff2') format('woff2');
   font-weight: 200 800;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   /* Metric overrides minimize layout shift if fallback renders before font loads */
   ascent-override: 90%;
   descent-override: 22%;

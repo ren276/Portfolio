@@ -79,6 +79,8 @@
             <img
               id="profile-img"
               :src="profile"
+              :srcset="`${profileSmall} 400w, ${profile} 1000w`"
+              sizes="(max-width: 768px) 400px, 336px"
               alt="Sandesh Verma — Android Engineer & Full Stack Developer"
               width="336"
               height="420"
@@ -120,7 +122,7 @@
   import { onBeforeMount, ref } from 'vue';
   import { MyName, Star } from '../design';
   import { Button } from '@/components/common';
-  import { profile2 as profile } from '@/assets/images';
+  import { profile2 as profile, profile2Small as profileSmall } from '@/assets/images';
   import { getAvailableForWorkDate, textSplitterIntoChar } from '@/functions';
   import { resumeUrl } from '@/functions/resumeState';
 
