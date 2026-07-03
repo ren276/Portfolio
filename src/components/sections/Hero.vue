@@ -38,7 +38,7 @@
             </div>
 
             <p class="sr-only">
-              A hireable Software Development Engineer specializing in Android, iOS, Flutter, Kotlin, React, and Machine Learning. Open to new opportunities to deliver privacy-first, cutting-edge solutions for your business.
+              I build products people actually use — mobile apps, AI tools, and systems that ship.
             </p>
             <p
               v-html="whoAmI"
@@ -47,21 +47,18 @@
             ></p>
 
             <div class="relative origin-left overflow-hidden sm:scale-150">
-              <div
+                <div
                 id="contact-btn"
                 class="flex -translate-y-full items-center gap-4"
               >
-                <!-- <Button
+                <button
                   :data-cal-namespace="dataCalNamespace"
                   :data-cal-link="dataCalLink"
                   :data-cal-config="dataCalConfig"
-                  class="contact"
-                  label="Get in touch"
-                /> -->
-                <Button
-                  label="Get in touch"
-                  url="mailto:sandeshverma0311@gmail.com"
-                />
+                  class="contact pointer-events-auto relative overflow-clip rounded-full bg-flax-smoke-950 px-5 py-2 text-[1rem] font-semibold uppercase tracking-normal text-flax-smoke-50 transition-colors duration-500 hover:bg-flax-smoke-800 sm:text-sm"
+                >
+                  Let's Talk
+                </button>
                 <Button
                   label="Resume"
                   :url="resumeUrl"
@@ -126,8 +123,13 @@
   import { getAvailableForWorkDate, textSplitterIntoChar } from '@/functions';
   import { resumeUrl } from '@/functions/resumeState';
 
+  // Cal.com config
+  const dataCalNamespace = '30min';
+  const dataCalLink = 'sandesh-verma/30min';
+  const dataCalConfig = '{"layout":"month_view", "theme": "dark", "brand": "#8C8C73"}';
+
   const whoAmI = ref(
-    'Mobile & Full-Stack Developer | Android · iOS · Flutter · AI/ML',
+    'I build products people use — mobile apps, AI tools, systems that ship.',
   );
   const AvailableForWorkDate = ref('');
 

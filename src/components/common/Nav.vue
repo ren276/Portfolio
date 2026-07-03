@@ -31,7 +31,24 @@
             :key="l.label"
             :id="l.label"
           >
+            <!-- Route links (starting with /) use RouterLink; hash links use anchor -->
+            <RouterLink
+              v-if="l.url.startsWith('/')"
+              :to="l.url"
+              @click="toggleBtnClickAnimation()"
+              class="group my-0 md:my-2 flex h-full w-fit translate-y-full cursor-pointer items-center justify-start leading-none will-change-auto"
+            >
+              <span
+                class="bg-flax-smoke-50 h-4 w-4 scale-0 rounded-full opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100"
+              ></span>
+              <p
+                class="font-fancy -translate-x-5 transition-all duration-300 ease-in-out group-hover:translate-x-5"
+              >
+                {{ l.label }}
+              </p>
+            </RouterLink>
             <a
+              v-else
               :href="l.url"
               @click="gotoSection(l.url)"
               class="group my-0 md:my-2 flex h-full w-fit translate-y-full cursor-pointer items-center justify-start leading-none will-change-auto"
@@ -97,25 +114,32 @@
         </div>
       </MagneticEffect>
 
-      <div class="flex justify-start">
-        <p
-          class="heading-6 font-fancy text-flax-smoke-400 hidden font-bold uppercase select-none md:block"
-        >
-          hireable & open to <br />
-          new opportunities
-        </p>
-      </div>
-      <div class="flex">
+
+      <div class="flex items-center">
         <ul
-          class="w-full flex-1 gap-1 overflow-y-hidden text-lg font-medium md:flex md:gap-2 md:text-xl lg:gap-4 lg:text-2xl xl:text-3xl"
+          class="w-full flex-1 gap-1 overflow-y-hidden text-lg font-medium md:flex md:items-center md:gap-2 md:text-xl lg:gap-4 lg:text-2xl xl:text-3xl"
         >
           <Link
             v-for="(l, index) in navLinks"
             :key="l.label"
             tag="li"
-            :label="l.label + (index !== navLinks.length - 1 ? ',' : '')"
+            :label="l.label + ','"
             :url="l.url"
           />
+          <!-- Blog route link — matches nav link style with slide-up hover -->
+          <li class="h-[2ch] w-fit overflow-y-hidden select-none max-md:h-5">
+            <RouterLink
+              to="/blogs"
+              class="group font-fancy font-medium"
+            >
+              <p class="font-fancy -translate-y-0 transition-all duration-300 ease-in-out will-change-auto group-hover:translate-y-[-100%]">
+                Blog
+              </p>
+              <p class="font-fancy transition-all duration-300 ease-in-out will-change-auto group-hover:translate-y-[-100%]">
+                Blog
+              </p>
+            </RouterLink>
+          </li>
         </ul>
       </div>
     </nav>
@@ -123,6 +147,7 @@
 </template>
 <script setup lang="ts">
   import { onMounted, ref, watch } from 'vue';
+  import { RouterLink } from 'vue-router';
 
   import { Link, BurgerMenuBtn, MagneticEffect } from '..';
   import { Circles } from '../design';

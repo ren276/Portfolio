@@ -34,6 +34,10 @@ const navbarLinks = [
     url: '#app',
   },
   ...navLinks,
+  {
+    label: 'Blog',
+    url: '/blogs',
+  },
 ];
 
 const socialLinks = [
@@ -70,16 +74,16 @@ const locationCountry = 'India';
 
 // cal.com
 const dataCalNamespace = '30min';
-const dataCalLink = 'sandeshverma0311/30min';
+const dataCalLink = 'sandesh-verma/30min';
 const dataCalConfig =
   '{"layout":"month_view", "theme": "dark", "brand": "#8C8C73"}';
 
 // --- ADDED DATA STRUCTURES FOR SANDESH VERMA ---
 
 export const aboutMeText1 =
-  "I'm a Computer Science Engineering graduate from GGSIPU (9.16 CGPA) with hands-on experience building mobile apps at scale. I've worked as an SDE-1 at NAVAN, built cross-platform apps using Flutter, and published AI/ML research in a Springer journal.";
+  "I've shipped mobile apps at scale as SDE-1 at NAVAN, built an AI monitoring platform (Sentinels) processing 10k+ metrics/sec, and created an AI study companion for India's most competitive exams. I publish research and hold a filed patent — but I care more about what ships than what looks good on paper.";
 export const aboutMeText2 =
-  'I hold a filed patent for interactive digital avatars and have led tech communities as CESTA President and GDSC Co-Lead. Proficient in Kotlin, Swift, Python, JavaScript, and modern frameworks like Jetpack Compose, SwiftUI, and Next.js.';
+  'Open to founding engineer roles at 0→1 startups. I move fast, own the full stack (Kotlin · Swift · Flutter · Python · Node), and have led communities of 500+ developers as GDSC Co-Lead. If you\'re building something ambitious, let\'s talk.';
 
 export const servicesData = [
   {
