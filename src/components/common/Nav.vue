@@ -120,7 +120,7 @@
           class="w-full flex-1 gap-1 overflow-y-hidden text-lg font-medium md:flex md:items-center md:gap-2 md:text-xl lg:gap-4 lg:text-2xl xl:text-3xl"
         >
           <Link
-            v-for="(l, index) in navLinks"
+            v-for="l in navLinks"
             :key="l.label"
             tag="li"
             :label="l.label + ','"
