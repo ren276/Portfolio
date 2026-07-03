@@ -1,8 +1,16 @@
 {
   "rewrites": [
     {
-      "source": "/api/counter/:match*",
-      "destination": "https://api.counterapi.dev/v2/sandesh-vermas-team-4624/sandyport_visits/:match*"
+      "source": "/api/counter/up",
+      "destination": "https://api.counterapi.dev/v2/sandesh-vermas-team-4624/sandyport_visits/up"
+    },
+    {
+      "source": "/api/counter/down",
+      "destination": "https://api.counterapi.dev/v2/sandesh-vermas-team-4624/sandyport_visits/down"
+    },
+    {
+      "source": "/api/counter",
+      "destination": "https://api.counterapi.dev/v2/sandesh-vermas-team-4624/sandyport_visits/"
     },
     {
       "source": "/((?!api/).*)",
@@ -48,7 +56,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://ghchart.rshah.org https://cdn.jsdelivr.net https://www.sandeshverma.dev; media-src 'self'; connect-src 'self' https://gist.githubusercontent.com https://vitals.vercel-insights.com; frame-ancestors 'none'"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://app.cal.com; style-src 'self' 'unsafe-inline' https://app.cal.com; font-src 'self'; img-src 'self' data: https://ghchart.rshah.org https://cdn.jsdelivr.net https://www.sandeshverma.dev https://app.cal.com; media-src 'self'; connect-src 'self' https://gist.githubusercontent.com https://vitals.vercel-insights.com https://api.cal.com https://app.cal.com; frame-src https://cal.com https://app.cal.com; frame-ancestors 'none'"
         }
       ]
     }

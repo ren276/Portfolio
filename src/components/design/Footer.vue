@@ -150,12 +150,15 @@
     }, 1000);
 
     // Visitor Counter implementation via Vercel proxy to bypass adblockers
+    // GET  /api/counter      → reads current count (no side-effect)
+    // GET  /api/counter/up   → increments count by 1
     const hasVisited = sessionStorage.getItem('has_visited_sandesh_portfolio');
-    const action = hasVisited ? '' : 'up';
-    
-    fetch(`/api/counter/${action}`)
+    const url = hasVisited ? '/api/counter' : '/api/counter/up';
+
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
+        // CounterAPI v2 response: { code: "200", data: { up_count: number, ... } }
         const count = data?.data?.up_count;
         if (typeof count === 'number') {
           visitCount.value = count;
