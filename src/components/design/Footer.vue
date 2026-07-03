@@ -151,7 +151,7 @@
 
     // Visitor Counter implementation via Vercel proxy to bypass adblockers
     const hasVisited = sessionStorage.getItem('has_visited_sandesh_portfolio');
-    const action = hasVisited ? 'get' : 'up';
+    const action = hasVisited ? '' : 'up';
     
     fetch(`/api/counter/${action}`)
       .then((res) => res.json())

@@ -52,6 +52,7 @@
                 class="flex -translate-y-full items-center gap-4"
               >
                 <button
+                  @click.prevent="openCalModal"
                   :data-cal-namespace="dataCalNamespace"
                   :data-cal-link="dataCalLink"
                   :data-cal-config="dataCalConfig"
@@ -132,6 +133,16 @@
     'I build products people use — mobile apps, AI tools, systems that ship.',
   );
   const AvailableForWorkDate = ref('');
+
+  const openCalModal = () => {
+    // Programmatically open Cal.com modal to fix Vue dynamic rendering issues
+    if (typeof window !== 'undefined' && (window as any).Cal) {
+      (window as any).Cal('modal', {
+        calLink: dataCalLink,
+        config: JSON.parse(dataCalConfig)
+      });
+    }
+  };
 
   onBeforeMount(() => {
     whoAmI.value = textSplitterIntoChar(whoAmI.value);
