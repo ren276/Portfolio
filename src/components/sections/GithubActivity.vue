@@ -28,15 +28,20 @@
       </div>
 
       <!-- Graph Container -->
-      <div class="w-full overflow-hidden flex justify-center mt-4 pb-2">
-        <img 
-          src="https://ghchart.rshah.org/39d353/ren276" 
-          alt="ren276's GitHub contribution activity chart" 
-          width="800"
-          height="128"
-          style="aspect-ratio: 800/128"
-          loading="lazy"
-          class="w-full max-w-5xl opacity-90 transition-opacity duration-300 hover:opacity-100 dark:invert-0" 
+      <div class="w-full overflow-x-auto flex justify-center mt-4 pb-2">
+        <GithubGraph 
+          account="ren276"
+          :months="12"
+          variant="github"
+          animation="cascade"
+          :animationSpeed="1.4"
+          :cellSize="14"
+          :cellGap="4"
+          :cellRadius="3"
+          ambientEffect="twinkle"
+          :ambientIntensity="0.7"
+          :showLegend="true"
+          :showAccount="false"
         />
       </div>
 
@@ -45,5 +50,5 @@
 </template>
 
 <script setup lang="ts">
-// We use a reliable dynamic SVG for the GitHub activity instead of the fragile scraping library.
+import GithubGraph from '@/components/ui/GithubGraph.vue';
 </script>
