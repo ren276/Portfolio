@@ -83,7 +83,8 @@ const dataCalConfig =
 export const aboutMeText1 =
   "I've shipped mobile apps at scale as SDE-1 at NAVAN, built an AI monitoring platform (Sentinels) processing 10k+ metrics/sec, and created an AI study companion for India's most competitive exams. I publish research and hold a filed patent — but I care more about what ships than what looks good on paper.";
 export const aboutMeText2 =
-  'Open to founding engineer roles at 0→1 startups. I move fast, own the full stack (Kotlin · Swift · Flutter · Python · Node), and have led communities of 500+ developers as GDSC Co-Lead. If you\'re building something ambitious, let\'s talk.';
+  /* 'Open to founding engineer roles at 0→1 startups. ' + */
+  'I move fast, own the full stack (Kotlin · Swift · Flutter · Python · Node), and have led communities of 500+ developers as GDSC Co-Lead. If you\'re building something ambitious, let\'s talk.';
 
 export const servicesData = [
   {
@@ -207,6 +208,13 @@ export const researchAndPatentsData = [
 ];
 
 export const experienceData = [
+  {
+    role: 'Research Engineer',
+    company: 'IIT Indore',
+    duration: 'July 2026 - Present',
+    description:
+      'Currently working as a Research Engineer at IIT Indore.',
+  },
   {
     role: 'Software Development Engineer 1',
     company: 'NAVAN, Gurugram',
