@@ -47,10 +47,7 @@
             ></p>
 
             <div class="relative origin-left overflow-hidden sm:scale-150">
-                <div
-                id="contact-btn"
-                class="flex -translate-y-full items-center gap-4"
-              >
+              <div id="contact-btn" class="flex -translate-y-full items-center gap-3 sm:gap-4">
                 <button
                   @click.prevent="openCalModal"
                   :data-cal-namespace="dataCalNamespace"
@@ -100,13 +97,16 @@
               <p
                 class="3xl:text-base block leading-snug font-medium -tracking-tight uppercase animate-float-3d"
               >
-                Available for new opportunities
+                Always open for a
               </p>
               <h3
                 class="3xl:heading-1 heading-1-alt font-fancy block leading-none font-bold -tracking-tight animate-glow"
               >
-                {{ AvailableForWorkDate }}
+                Good Chat
               </h3>
+              <span class="mt-1 text-xs font-medium tracking-normal text-flax-smoke-400 opacity-80 sm:text-sm lowercase">
+                (tap let's talk)
+              </span>
             </div>
           </div>
         </div>

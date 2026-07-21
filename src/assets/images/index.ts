@@ -8,6 +8,9 @@ import flow from './flow.png';
 import stash from './stash.png';
 import cartoon from './cartoon.png';
 import waving from './waving.webp';
+import iitLogo from './logos/iit_logo.png';
+import navanLogo from './logos/navan_logo.png';
+import heimatverseLogo from './logos/heimatverse_logo.png';
 
 export {
   profile,
@@ -20,4 +23,7 @@ export {
   stash,
   cartoon,
   waving,
+  iitLogo,
+  navanLogo,
+  heimatverseLogo,
 };

@@ -58,7 +58,17 @@
             <div class="absolute w-3 h-3 bg-[#0B0B0A] border-2 border-flax-smoke-500 rounded-full -left-[7px] top-4"></div>
             <p class="text-flax-smoke-500 text-sm font-mono mb-2">{{ exp.duration }}</p>
             <h5 class="text-xl font-bold text-white mb-1">{{ exp.role }}</h5>
-            <p class="text-flax-smoke-300 font-semibold mb-3">{{ exp.company }}</p>
+            <div class="flex items-center gap-2.5 mb-3">
+              <div v-if="exp.logo" class="flex items-center justify-center w-8 h-8 rounded-lg bg-flax-smoke-950/80 overflow-hidden shrink-0 border border-flax-smoke-500/30 p-1 shadow-md">
+                <img 
+                  :src="exp.logo" 
+                  :alt="exp.company"
+                  class="w-full h-full object-contain"
+                  @error="(e: Event) => ((e.target as HTMLElement).parentElement!.style.display = 'none')"
+                />
+              </div>
+              <p class="text-flax-smoke-300 font-semibold">{{ exp.company }}</p>
+            </div>
             <p class="text-flax-smoke-300/80 text-base leading-relaxed">{{ exp.description }}</p>
           </div>
         </div>

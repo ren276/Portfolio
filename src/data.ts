@@ -207,10 +207,13 @@ export const researchAndPatentsData = [
   },
 ];
 
+import { iitLogo, navanLogo, heimatverseLogo } from '@/assets/images';
+
 export const experienceData = [
   {
     role: 'Research Engineer',
     company: 'IIT Indore',
+    logo: iitLogo,
     duration: 'July 2026 - Present',
     description:
       'Currently working as a Research Engineer at IIT Indore.',
@@ -218,6 +221,7 @@ export const experienceData = [
   {
     role: 'Software Development Engineer 1',
     company: 'NAVAN, Gurugram',
+    logo: navanLogo,
     duration: 'April 2024 - July 2024',
     description:
       'Engineered Meal Selection feature for airline checkout using Agile SDLC, Kotlin, and SwiftUI. Improved crash-free users to 95.66% and significantly reduced ANR rates.',
@@ -225,6 +229,7 @@ export const experienceData = [
   {
     role: 'Flutter Developer Intern',
     company: 'HeimatVerse, New Delhi',
+    logo: heimatverseLogo,
     duration: 'July 2023 - September 2023',
     description:
       'Developed Autumn8 multiplatform Smart Home app using Flutter and Arduino. Improved prototype test speeds by 75% through optimization.',
